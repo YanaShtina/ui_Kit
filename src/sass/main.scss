@@ -1,0 +1,41 @@
+$base-font-size:22px;
+
+@mixin phone {
+   @media (max-width: 768px){
+      @content;
+   }
+}
+
+* {
+   box-sizing: border-box;
+}
+body{
+   font-size: $base-font-size;
+   font-family: Arial, Helvetica, sans-serif;
+
+   @include phone{
+         background-color: #333;
+         color: #fff
+   }
+}
+.testImg{
+   width: 600px;
+   margin-left: calc(50% - 225px);
+   img {
+      width: 100%;
+      height: 100%
+   }
+}
+.testImgCss{
+   background-image: url("/img/testPng.png");
+   width: 500px;
+   height: 300px;
+   background-repeat: no-repeat
+}
+
+// 1й вариант подключать так, тогда порядок сохранится
+// @import "block/title.scss"; 
+// @import "block/article.scss";
+
+//2й вариант подключать через маску (плагин сасс глоб)
+@import "block/*.scss"; 

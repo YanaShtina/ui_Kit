@@ -1,0 +1,16 @@
+.article{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 50px;
+   
+}
+article {
+   background-color: rosybrown;
+   padding: 20px;
+   
+   @include phone{
+      background-color: royalblue;
+      margin-bottom: 20px;
+   }
+}
