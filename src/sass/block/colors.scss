@@ -1,0 +1,66 @@
+.colors {
+   &__wrap {
+      padding: 100px;
+      width: 500px;
+      display: flex;
+   }
+
+   &__title {
+      margin-bottom: 36px;
+   }
+   &__column {
+      margin-right: 70px;
+   }
+
+   &__item{
+      width: 41px;
+      height: 41px;
+      border-radius: 100%;
+      margin-bottom: 20px;
+// colors
+      &._black {
+         background-color: $base-color;
+      }
+      &._grey {
+         background-color: $second-color;
+      }
+      &._blue {
+         background-color: $accent-color;
+      }
+      &._red {
+         background-color: $error-color;
+      }
+      &._green {
+         background-color: $success-color;
+      }
+      &._yelow {
+         background-color: $warning-color;
+      }
+// forms
+      &._form-base {
+         border: 1px solid $second-color;
+      }
+      &._form-accent {
+         border: 1px solid $accent-color;
+      }
+      &._form-error {
+         border: 1px solid $error-color;
+      }
+// shadow
+      &._elevation {
+         border: 1px solid rgba(224, 224, 224, 0.15);
+         &._1 {
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+         }
+         &._2 {
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+         }
+         &._3 {
+            box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.12);
+         }
+         &._4 {
+            box-shadow: 0px 10px 23px rgba(0, 0, 0, 0.12);
+         }
+      }
+   }
+}

@@ -1,0 +1,86 @@
+// basic resets
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  position: relative;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+   margin: 0;
+   padding: 0;
+}
+p{
+  margin: 0;
+  padding: 0;
+  
+}
+picture{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.btn-reset {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+// fonts
+@font-face {
+  font-family: "Inter-Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff2") format("woff2"),
+       url("../fonts/Inter-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter-Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/Inter-Medium.woff2") format("woff2"),
+       url("../fonts/Inter-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2"),
+       url("../fonts/Inter-Regular.woff") format("woff");
+}
+$base-font-size:13px;
+$base-font: Arial, Helvetica, sans-serif;
+
+
+// colors
+$base-color: #2C2C2C;
+$second-color: rgba(44,44,44,0.5);
+$accent-color: #18A0FB;
+$error-color: #FF3E1D;
+$success-color: #00D200;
+$warning-color: #FFD422;
+
+// title
+.title {
+  font-family: "Inter-Medium";
+  color: $base-color;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+
