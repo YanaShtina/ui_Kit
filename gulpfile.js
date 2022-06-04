@@ -12,7 +12,7 @@ const clear = require('./tasks/clear.js');
 const scss = require('./tasks/scss.js')
 const js = require('./tasks/js.js')
 const img = require('./tasks/img.js')
-const font = require('./tasks/font.js')
+const fonts = require('./tasks/fonts.js')
 
 //
 // Вочер
@@ -23,7 +23,7 @@ const watcher = () => {
    watch(path.scss.watch, scss).on('all', sync.reload);
    watch(path.js.watch, js).on('all', sync.reload);
    watch(path.img.watch, img).on('all', sync.reload);
-   watch(path.font.watch, font).on('all', sync.reload);
+   watch(path.fonts.watch, fonts).on('all', sync.reload);
 }
 
 //сервер
@@ -38,7 +38,7 @@ const server = () => {
 
 const build = series(
    clear,
-   parallel (html, scss, js, img, font),
+   parallel (html, scss, js, img, fonts),
 )
 
 const dev = series(
@@ -51,7 +51,7 @@ exports.html = html;
 exports.scss = scss;
 exports.js = js;
 exports.img = img;
-exports.font = font;
+exports.fonts = fonts;
 exports.watch = watcher; 
 exports.clear = clear; 
 

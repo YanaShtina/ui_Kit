@@ -1,8 +1,9 @@
 .colors {
-   &__wrap {
-      padding: 100px;
+   &__inner {
+      padding: 30px 0;
       width: 500px;
       display: flex;
+
    }
 
    &__title {

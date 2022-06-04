@@ -29,9 +29,9 @@ module.exports = {
       watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg}",
       dest: pathDest + "/img"
    },
-   font: {
-      src: pathSrc + "/font/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
-      watch: pathSrc + "/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
-      dest: pathDest + "/font"
+   fonts: {
+      src: pathSrc + "/fonts/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
+      watch: pathSrc + "/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}",
+      dest: pathDest + "/fonts"
    }
 }

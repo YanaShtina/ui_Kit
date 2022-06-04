@@ -12,8 +12,8 @@ const ttf2woff2 = require("gulp-ttf2woff2")
 
 
 
-const font = ()=> {
-   return src(path.font.src) 
+const fonts = ()=> {
+   return src(path.fonts.src) 
    .pipe(plumber({
       errorHandler: notify.onError(error => (
          {
@@ -22,11 +22,11 @@ const font = ()=> {
             }
          ))
    })) 
-   .pipe(imgNewer(path.font.dest)) // как фильтр, не пропускает те файлы, которые были ранее обработаны. В качестве значения путь к директории с конечными файлами
+   .pipe(imgNewer(path.fonts.dest)) // как фильтр, не пропускает те файлы, которые были ранее обработаны. В качестве значения путь к директории с конечными файлами
    .pipe(fonter(app.fonter))   
-   .pipe(dest(path.font.dest)) // конечная папка. В самом конце
+   .pipe(dest(path.fonts.dest)) // конечная папка. В самом конце
       .pipe(ttf2woff2())
-      .pipe(dest(path.font.dest))
+      .pipe(dest(path.fonts.dest))
 }
 
-module.exports = font;
+module.exports = fonts;

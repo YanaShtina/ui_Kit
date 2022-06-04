@@ -1,0 +1,136 @@
+.input {
+
+  &__wrapper {
+    display: flex;
+  }
+  &__withLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+    margin-right: 70px;
+  }
+
+  &__noLabel {
+    padding-top: 23px;
+    margin-right: 70px;
+  }
+
+  &__icons {
+    padding-top: 23px;
+  }
+
+  
+
+  &__item{
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    margin-bottom: 24px;
+
+    input {
+      padding: 10px 12px;
+      border-width: 1px;
+      border: 1px solid #E0E0E0;
+      border-radius: 4px;
+      color: $base-color;
+
+      &::placeholder {
+        font-family: 'Inter-Regular';
+        font-weight: 400;
+        font-size: 13px;
+        color: $base-color;
+        opacity: 0.5;
+      }
+
+      &:focus {
+        border-color: $accent-color;
+        // background-color: $error-color;
+      }
+    } 
+
+    &._error {
+
+      input {
+        background: rgba(255, 62, 29, 0.06);
+        border-color: $error-color;
+        opacity: 1;
+
+        &::placeholder {
+          color: $error-color;
+          opacity: 1;
+        }
+      }
+    }
+
+    &._focused {
+      input {
+        border-color: $accent-color;
+        opacity: 1;
+      }
+    }
+
+    &._disabled {
+      input {
+        background: rgba(224, 224, 224, 0.3);
+      }
+
+      .input__label {
+        opacity: 0.4;
+      }
+    }
+
+    &._left {
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        opacity: 0.5;
+      }
+      input {
+        padding-left: 37px;
+        -webkit-appearance: none;
+      }
+    }
+
+    &._right {
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        opacity: 0.5;
+      }
+      input {
+        padding-right: 37px;
+      }
+    }
+
+    &._dots {
+      position: relative;
+
+      input {
+        padding-left: 70px;
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 60px;
+        background: rgba(224, 224, 224, 0.3);
+        text-align: center;
+        padding-top: 10px; 
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 8px;
+  }
+}
