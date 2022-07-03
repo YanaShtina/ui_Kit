@@ -15,27 +15,17 @@
   \************************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("const sum = __webpack_require__(/*! ./modules/sum.js */ \"./src/js/modules/sum.js\");\nconst test = __webpack_require__(/*! ./modules/test.js */ \"./src/js/modules/test.js\");\n\ntest();\nconsole.log(sum(5, 5))\nconsole.log(sum(15,5))\n\n\n//# sourceURL=webpack://iana/./src/js/main.js?");
+eval("// noconst sum = require(\"./modules/sum.js\");\nconst Select = __webpack_require__(/*! ./modules/select.js */ \"./src/js/modules/select.js\");\n\n\nconst selectApp = new Select('#elemId', {\n  placeholder: '1234',\n  data: [\n    {id:0, value:'option1'},\n    {id:1, value:'option2'},\n    {id:2, value:'option3'},\n    {id:3, value:'option4'},\n    {id:4, value:'option5'},\n    {id:5, value:'option6'},\n  ]\n})\n\nwindow.s = selectApp;\n\n\n\n\n//# sourceURL=webpack://iana/./src/js/main.js?");
 
 /***/ }),
 
-/***/ "./src/js/modules/sum.js":
-/*!*******************************!*\
-  !*** ./src/js/modules/sum.js ***!
-  \*******************************/
+/***/ "./src/js/modules/select.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/select.js ***!
+  \**********************************/
 /***/ (function(module) {
 
-eval("module.exports = (a, b) => a + b;\n\n\n//# sourceURL=webpack://iana/./src/js/modules/sum.js?");
-
-/***/ }),
-
-/***/ "./src/js/modules/test.js":
-/*!********************************!*\
-  !*** ./src/js/modules/test.js ***!
-  \********************************/
-/***/ (function(module) {
-
-eval("\nmodule.exports = function() {\n  console.log('HELLO!!')\n};\n\n//# sourceURL=webpack://iana/./src/js/modules/test.js?");
+eval("const getTemplate = (data, placeholder) => {\n\n  const optionİtem = data.map((item) => {\n    // console.log(item)\n    return ` <li class=\"select__item\" data-type=\"option\" data-id=\"${item.id}\">${item.value}</li>`\n  })\n\n  const defaultPlaceholder = placeholder ?? 'placeholder не задан'\n  return `<div class=\"select__input\" data-type=\"input\">\n  <span class=\"select__input-text\">${defaultPlaceholder}</span>\n  <i class=\"select__input-icon fa-solid fa-chevron-down\"></i>\n</div>\n\n<div class=\"select__dropdown\">\n  <ul class=\"select__list\">\n  ${optionİtem.join('')}\n  </ul>\n</div>`\n}\n\nconst select = class Select {\n  constructor(selector, options) {\n    this.el = document.querySelector(selector)\n    this.options = options;\n    this.#render();\n    this.#setup();\n  }\n\n  #render() {\n    const {placeholder} = this.options;\n    const {data} = this.options;\n    // console.log('data', data);\n    this.el.classList.add('select')\n    this.el.innerHTML = getTemplate(data, placeholder);\n  }\n\n  #setup() {\n    this.clickHandler = this.clickHandler.bind(this) \n    this.el.addEventListener('click', this.clickHandler)\n  }\n\n  clickHandler(event) {\n    const { type } = event.target.dataset\n\n    if (type === 'input') {\n      this.toggle()\n    } else if (type === 'option') {\n      const { id } = event.target.dataset;\n      console.log(id)\n    }\n  }\n\n  open() {\n    this.el.classList.add('opened')\n  }\n\n  toggle() {\n    this.isOpened ? \n    this.el.classList.remove('opened') :\n    this.el.classList.add('opened')\n  }\n\n  get isOpened() {\n    return this.el.classList.contains('opened')\n  }\n\n  close() {\n    this.el.classList.remove('opened')\n  }\n\n  destroy() {\n    this.el.removeEventListener('click', this.clickHandler)\n  }\n}\n\nmodule.exports = select;\n\n//# sourceURL=webpack://iana/./src/js/modules/select.js?");
 
 /***/ })
 

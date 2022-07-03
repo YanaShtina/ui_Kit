@@ -1,0 +1,47 @@
+.textarea {
+&__wrapper {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+ &__item {
+
+  textarea {
+    padding: 10px 16px;
+    border-width: 1px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    color: $base-color;
+  
+    &::placeholder {
+      font-family: 'Inter-Regular';
+      font-weight: 400;
+      font-size: 13px;
+      color: $base-color;
+      opacity: 0.5;
+    }
+  
+    &:focus {
+      border-color: $accent-color;
+    }
+  }
+
+  &._error {
+    margin-left: 50px;
+    textarea {
+      background: rgba(255, 62, 29, 0.06);
+      border-color: $error-color;
+      opacity: 1;
+  
+      &::placeholder {
+        color: $error-color;
+        opacity: 1;
+      }
+    }
+   }
+}
+
+&__label {
+  margin-bottom: 8px;
+}
+}
