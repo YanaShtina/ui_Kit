@@ -57,6 +57,10 @@
     padding: 10px 12px;
     border-bottom: 1px solid #E0E0E0;
 
+   &.selected {
+    background-color: $accent-color;
+   }
+
     &:last-child {
       border-bottom: none;
     }

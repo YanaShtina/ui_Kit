@@ -4,6 +4,7 @@ const Select = require("./modules/select.js");
 
 const selectApp = new Select('#elemId', {
   placeholder: '1234',
+  selectedDefault: '2',
   data: [
     {id:0, value:'option1'},
     {id:1, value:'option2'},
