@@ -3,8 +3,8 @@ const Select = require("./modules/select.js");
 
 
 const selectApp = new Select('#elemId', {
-  placeholder: '1234',
-  selectedDefault: '2',
+  placeholder: 'Option',
+  selectedDefault: '-1',
   data: [
     {id:0, value:'option1'},
     {id:1, value:'option2'},
@@ -12,7 +12,10 @@ const selectApp = new Select('#elemId', {
     {id:3, value:'option4'},
     {id:4, value:'option5'},
     {id:5, value:'option6'},
-  ]
+  ],
+  onSelect(option) {
+    console.log('option', option);
+  }
 })
 
 window.s = selectApp;

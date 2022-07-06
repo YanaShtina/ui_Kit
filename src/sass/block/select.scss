@@ -1,5 +1,6 @@
 
 .select {
+
   width: 260px;
 
   &.opened {
@@ -13,6 +14,10 @@
     .select__input-icon {
       transform: rotate(180deg);
     }
+
+    .select__backdrop {
+      display: block;
+    }
   }
 
   &-item {
@@ -23,6 +28,8 @@
   }
 
   &__input {
+    position: relative;
+    z-index: 100;
     width: 100%;
     height: $heigh-select;
     padding: 0 12px;
@@ -41,11 +48,13 @@
       font-weight: 400;
       font-size: 13px;
       color: $base-color;
-      opacity: 0.5;
+      // opacity: 0.5;
     }
   }
 
   &__dropdown {
+    position: relative;
+    z-index: 100;
     display: none;
     min-height: 200px;
     border: 1px solid #E0E0E0;
@@ -69,5 +78,16 @@
       cursor: pointer;
       background-color: rgba(224, 224, 224, 0.3);
     }
+  }
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 1;
+    display: none;
   }
 }

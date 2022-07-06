@@ -1,5 +1,8 @@
 const getTemplate = (data, placeholder, selectedDefault) => {
   let defaultPlaceholder = placeholder ?? 'placeholder не задан'
+
+
+
   const optionİtem = data.map((item) => {
     let cls = ''
     if (item.id == selectedDefault) {
@@ -9,17 +12,22 @@ const getTemplate = (data, placeholder, selectedDefault) => {
     return ` <li class="select__item ${cls}" data-type="option" data-id="${item.id}">${item.value}</li>`
   })
 
-  
-  return `<div class="select__input" data-type="input">
-  <span class="select__input-text" data-type="value">${defaultPlaceholder}</span>
-  <i class="select__input-icon fa-solid fa-chevron-down"></i>
-</div>
 
-<div class="select__dropdown">
-  <ul class="select__list">
-  ${optionİtem.join('')}
-  </ul>
-</div>`
+  
+  return `
+  
+  <div class="select__input" data-type="input">
+    <span class="select__input-text" data-type="value">${defaultPlaceholder}</span>
+    <i class="select__input-icon fa-solid fa-chevron-down"></i>
+  </div>
+
+  <div class="select__dropdown">
+    <ul class="select__list">
+    ${optionİtem.join('')}
+    </ul>
+  </div>
+  <div class="select__backdrop" data-type="backdrop"></div>
+  `
 }
 
 const select = class Select {
@@ -27,6 +35,9 @@ const select = class Select {
     this.el = document.querySelector(selector)
     this.options = options;
     this.selectedId = options.selectedDefault;
+
+    this.placeholder = options.placeholder;
+
     this.#render();
     this.#setup();
   }
@@ -37,6 +48,12 @@ const select = class Select {
     // console.log('data', data);
     this.el.classList.add('select')
     this.el.innerHTML = getTemplate(data, placeholder, this.selectedId );
+    this.doRed();
+  }
+
+  doRed() {
+    document.querySelector('.select__input-text').style.opacity = '0.5'
+    console.log('doRed', this.placeholder);
   }
 
   #setup() {
@@ -48,13 +65,13 @@ const select = class Select {
   clickHandler(event) {
     const { type } = event.target.dataset
 
-    //console.log( this.value, this.el )
-
     if (type === 'input') {
       this.toggle()
     } else if (type === 'option') {
       const { id } = event.target.dataset;
       this.select(id)
+    } else if (type === 'backdrop') {
+      this.close();
     }
 
 
@@ -78,30 +95,26 @@ const select = class Select {
 
   select(id) {
     this.selectedId = id;
-    console.log('this.value.textContent ' , this.selectedId, this.currentOption)
+    // console.log('this.value.textContent ' , this.selectedId, this.currentOption)
     this.value.textContent = this.currentOption.value;
-
+    document.querySelector('.select__input-text').style.opacity = '1'
     this.el.querySelectorAll(`[data-type="option"]`).forEach((el) => {
       el.classList.remove('selected');
     })
 
+    this.options.onSelect ? this.options.onSelect(this.currentOption) : null;
+
     this.close();
     this.el.querySelector(`[data-id="${id}"]`).classList.add('selected')
   }
-
-
   toggle() {
     this.isOpened ? 
     this.el.classList.remove('opened') :
     this.el.classList.add('opened')
   }
-
-
-
   close() {
     this.el.classList.remove('opened')
   }
-
   destroy() {
     this.el.removeEventListener('click', this.clickHandler);
     this.el.innerHTML = '';
